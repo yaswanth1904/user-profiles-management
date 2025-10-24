@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for enhanced interactions */
+@layer components {
+  .btn-primary {
+    @apply transition-all duration-200 ease-out;
+    @apply bg-primary-600 text-white border border-primary-600;
+    @apply hover:bg-primary-700 hover:border-primary-700;
+    @apply focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply disabled:opacity-40 disabled:cursor-not-allowed;
+    @apply shadow-sm hover:shadow-md;
+  }
+  
+  .btn-primary:hover:not(:disabled) {
+    @apply transform -translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply transition-all duration-200 ease-out;
+    @apply bg-white text-gray-700 border border-gray-300;
+    @apply hover:bg-gray-50 hover:border-gray-400;
+    @apply focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply disabled:opacity-40 disabled:cursor-not-allowed;
+    @apply shadow-sm hover:shadow-md;
+  }
+  
+  .btn-secondary:hover:not(:disabled) {
+    @apply transform -translate-y-0.5;
+  }
+  
+  .btn-ghost {
+    @apply transition-all duration-200 ease-out;
+    @apply bg-transparent text-gray-600 border border-transparent;
+    @apply hover:bg-gray-100 hover:text-gray-900;
+    @apply focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  
+  .btn-ghost:hover:not(:disabled) {
+    @apply transform -translate-y-0.5;
+  }
+  
+  .interactive-element {
+    @apply transition-all duration-200 ease-out;
+  }
+  
+  .interactive-element:hover {
+    @apply transform -translate-y-1;
+  }
+  
+  .interactive-element:focus {
+    @apply ring-2 ring-offset-2 ring-primary-500;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-200 ease-out;
+    @apply hover:shadow-lg hover:border-primary-200;
+    @apply hover:transform hover:-translate-y-1;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent;
+  }
+  
+  .glass-effect {
+    @apply backdrop-blur-sm bg-white/80 border border-white/20;
+  }
+  
+  .drag-handle {
+    @apply cursor-grab;
+  }
+  
+  .drag-handle:active {
+    @apply cursor-grabbing;
+  }
+  
+  .resize-handle {
+    @apply cursor-col-resize;
+  }
+  
+  .resize-handle-vertical {
+    @apply cursor-row-resize;
+  }
+  
+  .loading-overlay {
+    @apply cursor-wait;
+  }
+  
+  .error-tooltip-trigger {
+    @apply cursor-help;
+  }
+}
+
+/* Custom animations */
+@keyframes slideUp {
+  from {
+    transform: translateY(4px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.15s ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Focus styles for accessibility */
+.focus-visible:focus {
+  @apply outline-none ring-2 ring-offset-2 ring-primary-500;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .interactive-element:hover {
+    @apply transform-none;
+  }
+  
+  .animate-slide-up,
+  .animate-fade-in {
+    animation: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn-primary {
+    @apply border-2 border-primary-600;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-gray-600;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
